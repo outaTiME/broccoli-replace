@@ -19,9 +19,12 @@ tree = replace(tree, options);
 
 ### Options
 
+_(Coming soon)_
+
 
 ## Release History
 
+ * 2014-02-23   v0.0.2   Use Filter instead of Transformer.
  * 2014-02-22   v0.0.1   Initial version.
 
 ---
