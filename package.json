@@ -21,7 +21,7 @@
     }
   ],
   "dependencies": {
-    "broccoli-filter": "0.0.1",
+    "broccoli-filter": "^0.1.0",
     "minimatch": "~0.2.14",
     "pattern-replace": "~0.1.0"
   },
