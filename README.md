@@ -6,7 +6,7 @@
 
 ## Install
 
-From NPM for use as a command line app:
+From NPM:
 
 ```shell
 npm install broccoli-replace --save-dev
