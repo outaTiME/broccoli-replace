@@ -4,14 +4,36 @@
 
 
 
-## Getting Started
+## Install
+
+From NPM for use as a command line app:
 
 ```shell
 npm install broccoli-replace --save-dev
 ```
 
-
 ## Replace Filter
+
+Assuming installation via NPM, you can use `broccoli-replace` in your brocfile like this:
+
+```javascript
+module.exports = function (broccoli) {
+  var replace = require('broccoli-replace');
+  var srcFiles = broccoli.makeTree('src');
+  srcFiles = replace(srcFiles, {
+    files: [
+      '**/*.html' // replace only html files in src
+    ],
+    patterns: [
+      {
+        match: 'foo',
+        replacement: 'bar'
+      }
+    ]
+  });
+  return [srcFiles];
+};
+```
 
 ### Options
 
@@ -19,7 +41,7 @@ npm install broccoli-replace --save-dev
 Type: `Array`
 Default: `[]`
 
-Define the source files that will be used for replacements.
+Define the source files that will be used for replacements, you can use globbing via [minimatch](https://github.com/isaacs/minimatch) library.
 
 > This is a mandatory value, an empty definition will ignore any kind of replacement.
 
@@ -28,14 +50,14 @@ Type: `Array`
 
 Define patterns that will be used to replace the contents of source files.
 
-> Check out [pattern-replace](https://github.com/outaTiME/grunt-replace#patterns) documentation for more details.
+> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#patterns) documentation for more details.
 
 #### variables
 Type: `Object`
 
 This is the old way to define patterns using plain object (simple variable lookup mechanism and no regexp support), you can still using but for more control you should use the new `patterns` way.
 
-> Check out [pattern-replace](https://github.com/outaTiME/grunt-replace#variables) documentation for more details.
+> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#variables) documentation for more details.
 
 #### prefix
 Type: `String`
@@ -43,15 +65,15 @@ Default: `@@`
 
 The prefix added for matching (prevent bad replacements / easy way).
 
-> Check out [pattern-replace](https://github.com/outaTiME/grunt-replace#prefix) documentation for more details.
+> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#prefix) documentation for more details.
 
 #### usePrefix
 Type: `Boolean`
 Default: `true`
 
-If set to `false`, we match the pattern without `prefix` concatenation. It was useful when you want to lookup an simple string.
+If set to `false`, we match the pattern without `prefix` concatenation (useful when you want to lookup an simple string).
 
-> Check out [pattern-replace](https://github.com/outaTiME/grunt-replace#useprefix) documentation for more details.
+> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#useprefix) documentation for more details.
 
 #### preservePrefix
 Type: `Boolean`
@@ -59,7 +81,7 @@ Default: `false`
 
 If set to `true`, we preserve the `prefix` in target.
 
-> Check out [pattern-replace](https://github.com/outaTiME/grunt-replace#preserveprefix) documentation for more details.
+> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#preserveprefix) documentation for more details.
 
 #### delimiter
 Type: `String`
@@ -67,7 +89,7 @@ Default: `.`
 
 The delimiter used to flatten when using object as replacement.
 
-> Check out [pattern-replace](https://github.com/outaTiME/grunt-replace#delimiter) documentation for more details.
+> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#delimiter) documentation for more details.
 
 ### Usage Examples
 
@@ -88,7 +110,7 @@ NETWORK:
 *
 ```
 
-Brocfile, define pattern (for timestamp) and the source files for lookup:
+Brocfile:
 
 ```js
 module.exports = function (broccoli) {
@@ -195,7 +217,7 @@ module.exports = function (broccoli) {
   var srcFiles = broccoli.makeTree('src');
   srcFiles = replace(srcFiles, {
     files: [
-      '**/*.html'
+      'index.html'
     ],
     patterns: [
       {
@@ -227,7 +249,7 @@ module.exports = function (broccoli) {
   var srcFiles = broccoli.makeTree('src');
   srcFiles = replace(srcFiles, {
     files: [
-      '**/*.html'
+      'index.html'
     ],
     patterns: [
       {
@@ -276,11 +298,12 @@ The `String` matching type or `expression` in `false` generates a simple variabl
 Brocfile:
 
 ```js
-// option 1 (explicitly using an regexp)
 module.exports = function (broccoli) {
   var replace = require('broccoli-replace');
   var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
+
+  // option 1 (explicitly using an regexp)
+  var replacer_op1 = replace(srcFiles, {
     files: [
       'foo.txt'
     ],
@@ -291,14 +314,9 @@ module.exports = function (broccoli) {
       }
     ]
   });
-  return [srcFiles];
-};
 
-// option 2 (easy way)
-module.exports = function (broccoli) {
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
+  // option 2 (easy way)
+  var replacer_op2 = replace(srcFiles, {
     files: [
       'foo.txt'
     ],
@@ -310,14 +328,9 @@ module.exports = function (broccoli) {
     ],
     usePrefix: false
   });
-  return [srcFiles];
-};
 
-// option 3 (old way)
-module.exports = function (broccoli) {
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
+  // option 3 (old way)
+  var replacer_op3 = replace(srcFiles, {
     files: [
       'foo.txt'
     ],
@@ -329,7 +342,8 @@ module.exports = function (broccoli) {
     ],
     prefix: '' // remove prefix
   });
-  return [srcFiles];
+
+  return [replacer_op1, replacer_op2, replacer_op3];
 };
 ```
 
