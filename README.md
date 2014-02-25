@@ -1,6 +1,6 @@
 # broccoli-replace
 
-> Replace text patterns with a given replacement using [pattern-replace](https://github.com/outaTiME/pattern-replace)
+> Replace text patterns with a given replacement using [pattern-replace](https://github.com/outaTiME/pattern-replace).
 
 
 
