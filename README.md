@@ -349,6 +349,7 @@ module.exports = function (broccoli) {
 
 ## Release History
 
+ * 2014-02-26   v0.0.4   Fix issue when no replacement found.
  * 2014-02-25   v0.0.3   Code normalization and documentation updated.
  * 2014-02-23   v0.0.2   Use Filter instead of Transformer.
  * 2014-02-22   v0.0.1   Initial version.
