@@ -43,5 +43,10 @@ ReplaceFilter.prototype.getDestFilePath = function (relativePath) {
 };
 
 ReplaceFilter.prototype.processString = function (string) {
-  return this.replacer.replace(string);
+  var result = this.replacer.replace(string);
+  if (result === false) {
+    // no replacements
+    return string;
+  }
+  return result;
 };
