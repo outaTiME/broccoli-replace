@@ -1,7 +1,7 @@
 {
   "name": "broccoli-replace",
-  "description": "Replace text patterns with a given replacement.",
-  "version": "0.0.4",
+  "description": "Replace text patterns using pattern-replace.",
+  "version": "0.1.0",
   "homepage": "http://github.com/outaTiME/broccoli-replace",
   "author": {
     "name": "outaTiME",
@@ -20,10 +20,16 @@
       "url": "https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT"
     }
   ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
   "dependencies": {
     "broccoli-filter": "^0.1.0",
     "minimatch": "~0.2.14",
-    "pattern-replace": "~0.1.0"
+    "pattern-replace": "0.1.2"
+  },
+  "devDependencies": {
+    "broccoli": "~0.1.1"
   },
   "keywords": [
     "broccoli-plugin",
@@ -37,11 +43,12 @@
     "regex",
     "regexp",
     "json",
+    "yaml",
     "flatten"
   ],
-  "main": "index.js",
+  "main": "filters/index.js",
   "files": [
-    "index.js",
+    "filters",
     "LICENSE-MIT"
   ]
 }

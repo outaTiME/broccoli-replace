@@ -1,6 +1,6 @@
 # broccoli-replace
 
-> Replace text patterns with a given replacement using [pattern-replace](https://github.com/outaTiME/pattern-replace).
+> Replace text patterns using [pattern-replace](https://github.com/outaTiME/pattern-replace).
 
 
 
@@ -14,7 +14,7 @@ npm install broccoli-replace --save-dev
 
 ## Replace Filter
 
-Assuming installation via NPM, you can use `broccoli-replace` in your brocfile like this:
+Assuming installation via NPM, you can use `broccoli-replace` in your Broccolifile like this:
 
 ```javascript
 module.exports = function (broccoli) {
@@ -45,51 +45,7 @@ Define the source files that will be used for replacements, you can use globbing
 
 > This is a mandatory value, an empty definition will ignore any kind of replacement.
 
-#### patterns
-Type: `Array`
-
-Define patterns that will be used to replace the contents of source files.
-
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#patterns) documentation for more details.
-
-#### variables
-Type: `Object`
-
-This is the old way to define patterns using plain object (simple variable lookup mechanism and no regexp support), you can still using but for more control you should use the new `patterns` way.
-
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#variables) documentation for more details.
-
-#### prefix
-Type: `String`
-Default: `@@`
-
-The prefix added for matching (prevent bad replacements / easy way).
-
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#prefix) documentation for more details.
-
-#### usePrefix
-Type: `Boolean`
-Default: `true`
-
-If set to `false`, we match the pattern without `prefix` concatenation (useful when you want to lookup an simple string).
-
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#useprefix) documentation for more details.
-
-#### preservePrefix
-Type: `Boolean`
-Default: `false`
-
-If set to `true`, we preserve the `prefix` in target.
-
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#preserveprefix) documentation for more details.
-
-#### delimiter
-Type: `String`
-Default: `.`
-
-The delimiter used to flatten when using object as replacement.
-
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#delimiter) documentation for more details.
+@@options
 
 ### Usage Examples
 
@@ -110,7 +66,7 @@ NETWORK:
 *
 ```
 
-Brocfile:
+Broccolifile:
 
 ```js
 module.exports = function (broccoli) {
@@ -171,7 +127,7 @@ File `src/humans.txt`:
 
 ```
 
-Brocfile:
+Broccolifile:
 
 ```js
 module.exports = function (broccoli) {
@@ -209,7 +165,7 @@ File `src/index.html`:
 </head>
 ```
 
-Brocfile:
+Broccolifile:
 
 ```js
 module.exports = function (broccoli) {
@@ -240,7 +196,7 @@ File `src/index.html`:
 </body>
 ```
 
-Brocfile:
+Broccolifile:
 
 ```js
 module.exports = function (broccoli) {
@@ -270,7 +226,7 @@ File `src/username.txt`:
 John Smith
 ```
 
-Brocfile:
+Broccolifile:
 
 ```js
 module.exports = function (broccoli) {
@@ -295,7 +251,7 @@ module.exports = function (broccoli) {
 
 The `String` matching type or `expression` in `false` generates a simple variable lookup mechanism `@@string`, to skip this mode use one of the below rules ... make your choice:
 
-Brocfile:
+Broccolifile:
 
 ```js
 module.exports = function (broccoli) {
@@ -349,6 +305,7 @@ module.exports = function (broccoli) {
 
 ## Release History
 
+ * 2014-02-12   v0.1.0   New [pattern-replace](https://github.com/outaTiME/pattern-replace) modular core for replacements.
  * 2014-02-26   v0.0.4   Fix issue when no replacement found.
  * 2014-02-25   v0.0.3   Code normalization and documentation updated.
  * 2014-02-23   v0.0.2   Use Filter instead of Transformer.
