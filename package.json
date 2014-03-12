@@ -23,13 +23,18 @@
   "engines": {
     "node": ">= 0.8.0"
   },
+  "scripts": {
+    "test": "broccoli build temp && nodeunit test/*.js"
+  },
   "dependencies": {
     "broccoli-filter": "^0.1.0",
     "minimatch": "~0.2.14",
     "pattern-replace": "0.1.2"
   },
   "devDependencies": {
-    "broccoli": "~0.1.1"
+    "broccoli": "~0.1.1",
+    "nodeunit": "~0.8.0",
+    "rimraf": "~2.2.6"
   },
   "keywords": [
     "broccoli-plugin",
