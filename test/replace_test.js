@@ -8,6 +8,7 @@
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
 
+var fs = require('fs');
 var rimraf = require('rimraf');
 
 exports['replace'] = {
@@ -27,7 +28,7 @@ exports['replace'] = {
     test.expect(1);
 
     expect = 'value\n';
-    result = 'value\n';
+    result = fs.readFileSync('temp/simple.txt', 'utf8');
     test.equal(expect, result, 'should replace simple key with value');
 
     test.done();

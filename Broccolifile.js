@@ -14,7 +14,7 @@ module.exports = function (broccoli) {
 
   var fs = require('fs');
   var filename = './node_modules/pattern-replace/README.md';
-  var readme = fs.readFileSync(filename).toString();
+  var readme = fs.readFileSync(filename, 'utf8');
   // initialize section
   var sections = {};
   // http://regex101.com/r/wJ2wW8
@@ -39,6 +39,21 @@ module.exports = function (broccoli) {
   // broccoli
 
   var replace = require('./filters');
+
+  // test
+
+  var testFiles = broccoli.makeTree('test/fixtures');
+  testFiles = replace(testFiles, {
+    files: [
+      'simple.txt'
+    ],
+    variables: {
+      'key': 'value'
+    }
+  });
+
+  // readme
+
   var srcFiles = broccoli.makeTree('docs');
   srcFiles = replace(srcFiles, {
     files: [
@@ -51,6 +66,6 @@ module.exports = function (broccoli) {
       }
     }
   });
-  return [srcFiles];
+  return [testFiles, srcFiles];
 
 };
