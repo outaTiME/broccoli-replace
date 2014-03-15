@@ -472,7 +472,7 @@ module.exports = function (broccoli) {
 
 ## Release History
 
- * 2014-02-12   v0.1.0   New [pattern-replace](https://github.com/outaTiME/pattern-replace) modular core for replacements.
+ * 2014-03-15   v0.1.2   New [pattern-replace](https://github.com/outaTiME/pattern-replace) modular core for replacements.
  * 2014-02-26   v0.0.4   Fix issue when no replacement found.
  * 2014-02-25   v0.0.3   Code normalization and documentation updated.
  * 2014-02-23   v0.0.2   Use Filter instead of Transformer.
