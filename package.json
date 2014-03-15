@@ -1,7 +1,7 @@
 {
   "name": "broccoli-replace",
   "description": "Replace text patterns using pattern-replace.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "http://github.com/outaTiME/broccoli-replace",
   "author": {
     "name": "outaTiME",
@@ -24,7 +24,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "prepublish": "scripts/prepublish.sh",
+    "release": "scripts/release.sh",
     "test": "broccoli build temp && nodeunit test/*.js"
   },
   "dependencies": {
