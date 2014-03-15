@@ -1,7 +1,6 @@
 
 /*
  * broccoli-replace
- * http://gruntjs.com/
  *
  * Copyright (c) 2014 outaTiME
  * Licensed under the MIT license.
@@ -25,12 +24,6 @@ while ((match = pattern.exec(readme)) !== null) {
   console.log(msg); */
   sections[section] = contents;
 }
-
-// took contents from readme section
-
-var getSectionContents = function (name) {
-
-};
 
 // write readme
 
