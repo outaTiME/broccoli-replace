@@ -10,9 +10,9 @@ npm test
 node scripts/generate.js
 
 # create the commit, tag the commit with the proper version
-# git add --all
-# git commit -am "README.md generation for $npm_package_version version"
+git add --all
+git commit -am "README.md generation for $npm_package_version version"
 
-# git tag $npm_package_version
-# git push
-# git push --tags
+git tag $npm_package_version
+git push
+git push --tags
