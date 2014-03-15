@@ -24,6 +24,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
+    "prepublish": "scripts/prepublish.sh",
     "test": "broccoli build temp && nodeunit test/*.js"
   },
   "dependencies": {

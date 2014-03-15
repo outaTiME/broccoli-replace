@@ -45,19 +45,137 @@ Define the source files that will be used for replacements, you can use globbing
 
 > This is a mandatory value, an empty definition will ignore any kind of replacement.
 
+
+
 #### patterns
 Type: `Array`
 
 Define patterns that will be used to replace the contents of source files.
 
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#patterns) documentation for more details.
+#### patterns.match
+Type: `String|RegExp`
+
+Indicates the matching expression.
+
+If matching type is `String` and `expression` attribute is `false` we use a simple variable lookup mechanism `@@string` (in any other case we use the default regexp replace logic):
+
+```javascript
+{
+  patterns: [
+    {
+      match: 'foo',
+      replacement: 'bar', // replaces "@@foo" to "bar"
+      expression: false   // simple variable lookup
+    }
+  ]
+}
+```
+
+#### patterns.replacement
+Type: `String|Function|Object`
+
+Indicates the replacement for match, for more information about replacement check out the [String.replace].
+
+You can specify a function as replacement. In this case, the function will be invoked after the match has been performed. The function's result (return value) will be used as the replacement string.
+
+```javascript
+{
+  patterns: [
+    {
+      match: /foo/g,
+      replacement: function () {
+        return 'bar'; // replaces "foo" to "bar"
+      }
+    }
+  ]
+}
+```
+
+Also supports object as replacement (we create string representation of object using [JSON.stringify]):
+
+```javascript
+{
+  patterns: [
+    {
+      match: /foo/g,
+      replacement: [1, 2, 3] // replaces "foo" with string representation of "array" object
+    }
+  ]
+}
+```
+
+[String.replace]: http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+[JSON.stringify]: http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+
+#### patterns.json
+Type: `Object`
+
+If an attribute `json` found in pattern definition we flatten the object using `delimiter` concatenation and each key–value pair will be used for the replacement (simple variable lookup mechanism and no regexp support).
+
+```javascript
+{
+  patterns: [
+    {
+      json: {
+        "key": "value" // replaces "@@key" to "value"
+      }
+    }
+  ]
+}
+```
+
+Also supports nested objects:
+
+```javascript
+{
+  patterns: [
+    {
+      json: {
+        "key": "value",   // replaces "@@key" to "value"
+        "inner": {        // replaces "@@inner" with string representation of "inner" object
+          "key": "value"  // replaces "@@inner.key" to "value"
+        }
+      }
+    }
+  ]
+}
+```
+
+#### patterns.yaml
+Type: `String`
+
+If an attribute `yaml` found in pattern definition we flatten the object using `delimiter` concatenation and each key–value pair will be used for the replacement (simple variable lookup mechanism and no regexp support).
+
+```javascript
+{
+  patterns: [
+    {
+      yaml: 'key: value'  // replaces "@@key" to "value"
+    }
+  ]
+}
+```
+
+#### patterns.expression
+Type: `Boolean`
+Default: `false`
+
+Indicates the type of matching.
+
+If detects regexp instance in `match` attribute, we assume to works with expression matcher (in any other case should be forced).
 
 #### variables
 Type: `Object`
 
 This is the old way to define patterns using plain object (simple variable lookup mechanism and no regexp support), you can still using but for more control you should use the new `patterns` way.
 
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#variables) documentation for more details.
+```javascript
+{
+  variables: {
+    'key': 'value' // replaces "@@key" to "value"
+  }
+}
+```
 
 #### prefix
 Type: `String`
@@ -65,7 +183,7 @@ Default: `@@`
 
 The prefix added for matching (prevent bad replacements / easy way).
 
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#prefix) documentation for more details.
+> This only applies for simple variable lookup mechanism.
 
 #### usePrefix
 Type: `Boolean`
@@ -73,7 +191,7 @@ Default: `true`
 
 If set to `false`, we match the pattern without `prefix` concatenation (useful when you want to lookup an simple string).
 
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#useprefix) documentation for more details.
+> This only applies for simple variable lookup mechanism.
 
 #### preservePrefix
 Type: `Boolean`
@@ -81,7 +199,7 @@ Default: `false`
 
 If set to `true`, we preserve the `prefix` in target.
 
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#preserveprefix) documentation for more details.
+> This only applies for simple variable lookup mechanism and `patterns.replacement` is an string.
 
 #### delimiter
 Type: `String`
@@ -89,7 +207,12 @@ Default: `.`
 
 The delimiter used to flatten when using object as replacement.
 
-> Check out [pattern-replace](https://github.com/outaTiME/pattern-replace#delimiter) documentation for more details.
+#### preserveOrder
+Type: `Boolean`
+Default: `false`
+
+If set to `true`, we preserve the patterns definition order, otherwise these will be sorted (in ascending order) to prevent replacement issues like `head` / `header` (typo regexps will be resolved at last).
+
 
 ### Usage Examples
 
@@ -349,6 +472,7 @@ module.exports = function (broccoli) {
 
 ## Release History
 
+ * 2014-02-12   v0.1.0   New [pattern-replace](https://github.com/outaTiME/pattern-replace) modular core for replacements.
  * 2014-02-26   v0.0.4   Fix issue when no replacement found.
  * 2014-02-25   v0.0.3   Code normalization and documentation updated.
  * 2014-02-23   v0.0.2   Use Filter instead of Transformer.
