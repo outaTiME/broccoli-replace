@@ -14,7 +14,7 @@ npm install broccoli-replace --save-dev
 
 ## Replace Filter
 
-Assuming installation via NPM, you can use `broccoli-replace` in your brocfile like this:
+Assuming installation via NPM, you can use `broccoli-replace` in your broccolifile like this:
 
 ```javascript
 module.exports = function (broccoli) {
