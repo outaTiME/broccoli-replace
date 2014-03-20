@@ -7,6 +7,8 @@
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
 
+'use strict';
+
 // dependencies
 
 var Filter = require('broccoli-filter');

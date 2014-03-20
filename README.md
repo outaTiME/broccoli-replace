@@ -22,7 +22,7 @@ module.exports = function (broccoli) {
   var srcFiles = broccoli.makeTree('src');
   srcFiles = replace(srcFiles, {
     files: [
-      '**/*.html' // replace only html files in src
+      'index.html'
     ],
     patterns: [
       {
@@ -271,7 +271,6 @@ NETWORK:
 *
 ```
 
-
 File `src/humans.txt`:
 
 ```
@@ -377,7 +376,7 @@ module.exports = function (broccoli) {
     patterns: [
       {
         match: 'include',
-        replacement: fs.readFileSync('./includes/content.html').toString()
+        replacement: fs.readFileSync('./includes/content.html', 'utf8')
       }
     ]
   });
