@@ -14,7 +14,7 @@ npm install broccoli-replace --save-dev
 
 ## Replace Filter
 
-Assuming installation via NPM, you can use `broccoli-replace` in your brocfile like this:
+Assuming installation via NPM, you can use `broccoli-replace` in your broccolifile like this:
 
 ```javascript
 module.exports = function (broccoli) {
@@ -304,6 +304,7 @@ module.exports = function (broccoli) {
 
 ## Release History
 
+ * 2014-03-21   v0.1.3   Test cases in Mocha, readme updated and code cleanup.
  * 2014-03-15   v0.1.2   New [pattern-replace](https://github.com/outaTiME/pattern-replace) modular core for replacements.
  * 2014-02-26   v0.0.4   Fix issue when no replacement found.
  * 2014-02-25   v0.0.3   Code normalization and documentation updated.

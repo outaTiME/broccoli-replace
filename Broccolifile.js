@@ -1,22 +1,17 @@
 
 /*
  * broccoli-replace
- * http://gruntjs.com/
  *
  * Copyright (c) 2014 outaTiME
  * Licensed under the MIT license.
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
 
+'use strict';
+
 module.exports = function (broccoli) {
 
-  'use strict';
-
-  // broccoli
-
-  var replace = require('./filters');
-
-  // test
+  var replace = require('./index');
 
   var testFiles = broccoli.makeTree('test/fixtures');
   testFiles = replace(testFiles, {
@@ -24,7 +19,7 @@ module.exports = function (broccoli) {
       'simple.txt'
     ],
     variables: {
-      'key': 'value'
+      key: 'value'
     }
   });
 

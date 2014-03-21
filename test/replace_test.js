@@ -7,31 +7,32 @@
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
 
+'use strict';
+
+// dependencies
+
+var assert = require('assert');
 var fs = require('fs');
 var rimraf = require('rimraf');
 
-exports['replace'] = {
+// test
 
-  tearDown: function (cb) {
-    rimraf.sync('temp');
-    cb();
-  },
+afterEach(function () {
+  rimraf.sync('temp');
+});
 
-  main: function (test) {
+describe('broccoli-replace', function () {
 
-    'use strict';
+  var expect;
+  var result;
 
-    var expect;
-    var result;
-
-    test.expect(1);
+  it('should replace simple key with value', function (done) {
 
     expect = 'value\n';
     result = fs.readFileSync('temp/simple.txt', 'utf8');
-    test.equal(expect, result, 'should replace simple key with value');
+    assert.equal(result, expect);
+    done();
 
-    test.done();
+  });
 
-  }
-
-};
+});
