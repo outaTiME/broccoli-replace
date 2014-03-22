@@ -1,6 +1,6 @@
 # broccoli-replace [![Build Status](https://secure.travis-ci.org/outaTiME/broccoli-replace.png?branch=master)](http://travis-ci.org/outaTiME/broccoli-replace)
 
-> Replace text patterns using [pattern-replace](https://github.com/outaTiME/pattern-replace).
+> Replace text patterns with [applause](https://github.com/outaTiME/applause).
 
 
 
@@ -248,8 +248,6 @@ module.exports = function (broccoli) {
 
 #### Lookup for `foo` instead of `@@foo`
 
-The `String` matching type or `expression` in `false` generates a simple variable lookup mechanism `@@string`, to skip this mode use one of the below rules ... make your choice:
-
 Broccolifile:
 
 ```js
@@ -304,6 +302,7 @@ module.exports = function (broccoli) {
 
 ## Release History
 
+ * 2014-03-22   v0.1.4   Modular core renamed to [applause](https://github.com/outaTiME/applause). Performance improvements. Expression flag removed. New pattern matching for CSON object. More test cases, readme updated and code cleanup.
  * 2014-03-21   v0.1.3   Test cases in Mocha, readme updated and code cleanup.
  * 2014-03-15   v0.1.2   New [pattern-replace](https://github.com/outaTiME/pattern-replace) modular core for replacements.
  * 2014-02-26   v0.0.4   Fix issue when no replacement found.

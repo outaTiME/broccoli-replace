@@ -13,7 +13,7 @@
 
 var Filter = require('broccoli-filter');
 var minimatch = require("minimatch");
-var Replacer = require('pattern-replace');
+var Applause = require('applause');
 
 function ReplaceFilter (inputTree, options) {
   if (!(this instanceof ReplaceFilter)) {
@@ -23,7 +23,7 @@ function ReplaceFilter (inputTree, options) {
   this.inputTree = inputTree;
   this.options = options || {};
   this.files = this.options.files;
-  this.replacer = new Replacer(options);
+  this.applause = Applause.create(options);
 }
 
 ReplaceFilter.prototype = Object.create(Filter.prototype);
@@ -46,7 +46,7 @@ ReplaceFilter.prototype.getDestFilePath = function (relativePath) {
 };
 
 ReplaceFilter.prototype.processString = function (string) {
-  var result = this.replacer.replace(string);
+  var result = this.applause.replace(string);
   if (result === false) {
     // no replacements
     return string;
