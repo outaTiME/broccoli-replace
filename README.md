@@ -475,6 +475,7 @@ module.exports = function (broccoli) {
 
 ## Release History
 
+ * 2014-03-23   v0.1.5   Readme updated.
  * 2014-03-22   v0.1.4   Modular core renamed to [applause](https://github.com/outaTiME/applause). Performance improvements. Expression flag removed. New pattern matching for CSON object. More test cases, readme updated and code cleanup.
  * 2014-03-21   v0.1.3   Test cases in Mocha, readme updated and code cleanup.
  * 2014-03-15   v0.1.2   New [pattern-replace](https://github.com/outaTiME/pattern-replace) modular core for replacements.
