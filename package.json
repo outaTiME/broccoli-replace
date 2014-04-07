@@ -28,14 +28,14 @@
     "test": "broccoli build temp && mocha"
   },
   "dependencies": {
-    "broccoli-filter": "^0.1.0",
     "minimatch": "~0.2.14",
-    "applause": "0.3.1"
+    "applause": "0.3.1",
+    "broccoli-filter": "^0.1.6"
   },
   "devDependencies": {
-    "broccoli": "~0.1.1",
     "mocha": "*",
-    "rimraf": "~2.2.6"
+    "rimraf": "~2.2.6",
+    "broccoli": "^0.7.2"
   },
   "keywords": [
     "broccoli-plugin",
