@@ -1,7 +1,7 @@
 {
   "name": "broccoli-replace",
   "description": "Replace text patterns with applause.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "http://github.com/outaTiME/broccoli-replace",
   "author": {
     "name": "outaTiME",
