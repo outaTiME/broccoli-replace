@@ -13,16 +13,13 @@ module.exports = function (broccoli) {
 
   var replace = require('./index');
 
-  var testFiles = broccoli.makeTree('test/fixtures');
-  testFiles = replace(testFiles, {
-    files: [
-      'simple.txt'
-    ],
-    variables: {
-      key: 'value'
-    }
+  return replace('test/fixtures', {
+      files: [
+          'simple.txt'
+      ],
+      variables: {
+          key: 'value'
+      }
   });
-
-  return [testFiles];
 
 };
