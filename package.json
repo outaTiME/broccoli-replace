@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "minimatch": "~0.2.14",
-    "applause": "0.3.1",
+    "applause": "0.3.2",
     "broccoli-filter": "^0.1.6"
   },
   "devDependencies": {
@@ -50,6 +50,7 @@
     "regexp",
     "json",
     "yaml",
+    "cson",
     "flatten"
   ],
   "main": "index.js",
