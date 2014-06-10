@@ -14,25 +14,21 @@ npm install broccoli-replace --save-dev
 
 ## Replace Filter
 
-Assuming installation via NPM, you can use `broccoli-replace` in your broccolifile like this:
+Assuming installation via NPM, you can use `broccoli-replace` in your Brocfile.js like this:
 
 ```javascript
-module.exports = function (broccoli) {
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
-    files: [
-      '**/*.html' // replace only html files in src
-    ],
-    patterns: [
-      {
-        match: 'foo',
-        replacement: 'bar'
-      }
-    ]
-  });
-  return [srcFiles];
-};
+var replace = require('broccoli-replace');
+module.exports = replace('src', {
+  files: [
+    '**/*.html' // replace only html files in src
+  ],
+  patterns: [
+    {
+      match: 'foo',
+      replacement: 'bar'
+    }
+  ]
+});
 ```
 
 ### Options
@@ -283,25 +279,21 @@ NETWORK:
 *
 ```
 
-Broccolifile:
+Brocfile.js:
 
 ```js
-module.exports = function (broccoli) {
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
-    files: [
-      'manifest.appcache'
-    ],
-    patterns: [
-      {
-        match: 'timestamp',
-        replacement: new Date().getTime()
-      }
-    ]
-  });
-  return [srcFiles];
-};
+var replace = require('broccoli-replace');
+module.exports = replace('src', {
+  files: [
+    'manifest.appcache'
+  ],
+  patterns: [
+    {
+      match: 'timestamp',
+      replacement: new Date().getTime()
+    }
+  ]
+});
 ```
 
 #### Multiple matching
@@ -343,31 +335,27 @@ File `src/humans.txt`:
 
 ```
 
-Broccolifile:
+Brocfile.js:
 
 ```js
-module.exports = function (broccoli) {
-  var pkg = require('./package.json');
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
-    files: [
-      'manifest.appcache',
-      'humans.txt'
-    ],
-    patterns: [
-      {
-        match: 'version',
-        replacement: pkg.version
-      },
-      {
-        match: 'timestamp',
-        replacement: new Date().getTime()
-      }
-    ]
-  });
-  return [srcFiles];
-};
+var pkg = require('./package.json');
+var replace = require('broccoli-replace');
+module.exports = replace('src', {
+  files: [
+    'manifest.appcache',
+    'humans.txt'
+  ],
+  patterns: [
+    {
+      match: 'version',
+      replacement: pkg.version
+    },
+    {
+      match: 'timestamp',
+      replacement: new Date().getTime()
+    }
+  ]
+});
 ```
 
 #### Cache busting
@@ -381,25 +369,21 @@ File `src/index.html`:
 </head>
 ```
 
-Broccolifile:
+Brocfile.js:
 
 ```js
-module.exports = function (broccoli) {
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
-    files: [
-      'index.html'
-    ],
-    patterns: [
-      {
-        match: 'timestamp',
-        replacement: new Date().getTime()
-      }
-    ]
-  });
-  return [srcFiles];
-};
+var replace = require('broccoli-replace');
+module.exports = replace('src', {
+  files: [
+    'index.html'
+  ],
+  patterns: [
+    {
+      match: 'timestamp',
+      replacement: new Date().getTime()
+    }
+  ]
+});
 ```
 
 #### Include file
@@ -412,26 +396,22 @@ File `src/index.html`:
 </body>
 ```
 
-Broccolifile:
+Brocfile.js:
 
 ```js
-module.exports = function (broccoli) {
-  var fs = require('fs');
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
-    files: [
-      'index.html'
-    ],
-    patterns: [
-      {
-        match: 'include',
-        replacement: fs.readFileSync('./includes/content.html', 'utf8')
-      }
-    ]
-  });
-  return [srcFiles];
-};
+var fs = require('fs');
+var replace = require('broccoli-replace');
+module.exports = replace('src', {
+  files: [
+    'index.html'
+  ],
+  patterns: [
+    {
+      match: 'include',
+      replacement: fs.readFileSync('./includes/content.html', 'utf8')
+    }
+  ]
+});
 ```
 
 #### Regular expression
@@ -442,83 +422,78 @@ File `src/username.txt`:
 John Smith
 ```
 
-Broccolifile:
+Brocfile.js:
 
 ```js
-module.exports = function (broccoli) {
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
-  srcFiles = replace(srcFiles, {
-    files: [
-      'username.txt'
-    ],
-    patterns: [
-      {
-        match: /(\w+)\s(\w+)/,
-        replacement: '$2, $1' // replaces "John Smith" to "Smith, John"
-      }
-    ]
-  });
-  return [srcFiles];
-};
+var replace = require('broccoli-replace');
+module.exports = replace('src', {
+  files: [
+    'username.txt'
+  ],
+  patterns: [
+    {
+      match: /(\w+)\s(\w+)/,
+      replacement: '$2, $1' // replaces "John Smith" to "Smith, John"
+    }
+  ]
+});
 ```
 
 #### Lookup for `foo` instead of `@@foo`
 
-Broccolifile:
+Brocfile.js:
 
 ```js
-module.exports = function (broccoli) {
-  var replace = require('broccoli-replace');
-  var srcFiles = broccoli.makeTree('src');
+var mergeTrees = require('broccoli-merge-trees');
+var replace = require('broccoli-replace');
 
-  // option 1 (explicitly using an regexp)
-  var replacer_op1 = replace(srcFiles, {
-    files: [
-      'foo.txt'
-    ],
-    patterns: [
-      {
-        match: /foo/g,
-        replacement: 'bar'
-      }
-    ]
-  });
+// option 1 (explicitly using an regexp)
+var replacer_op1 = replace('src_op1', {
+  files: [
+    'foo.txt'
+  ],
+  patterns: [
+    {
+      match: /foo/g,
+      replacement: 'bar'
+    }
+  ]
+});
 
-  // option 2 (easy way)
-  var replacer_op2 = replace(srcFiles, {
-    files: [
-      'foo.txt'
-    ],
-    patterns: [
-      {
-        match: 'foo',
-        replacement: 'bar'
-      }
-    ],
-    usePrefix: false
-  });
+// option 2 (easy way)
+var replacer_op2 = replace('src_op2', {
+  files: [
+    'foo.txt'
+  ],
+  patterns: [
+    {
+      match: 'foo',
+      replacement: 'bar'
+    }
+  ],
+  usePrefix: false
+});
 
-  // option 3 (old way)
-  var replacer_op3 = replace(srcFiles, {
-    files: [
-      'foo.txt'
-    ],
-    patterns: [
-      {
-        match: 'foo',
-        replacement: 'bar'
-      }
-    ],
-    prefix: '' // remove prefix
-  });
+// option 3 (old way)
+var replacer_op3 = replace('src_op3', {
+  files: [
+    'foo.txt'
+  ],
+  patterns: [
+    {
+      match: 'foo',
+      replacement: 'bar'
+    }
+  ],
+  prefix: '' // remove prefix
+});
 
-  return [replacer_op1, replacer_op2, replacer_op3];
-};
+module.exports = mergeTrees([replacer_op1, replacer_op2, replacer_op3]);
 ```
 
 ## Release History
 
+ * 2014-06-10   v0.1.7   Remove node v.8.0 support and third party dependencies updated. Update examples in new broccoli way.
  * 2014-04-20   v0.1.6   JSON / YAML / CSON as function supported. Readme updated (thanks [@milanlandaverde](https://github.com/milanlandaverde)).
  * 2014-03-23   v0.1.5   Readme updated.
  * 2014-03-22   v0.1.4   Modular core renamed to [applause](https://github.com/outaTiME/applause). Performance improvements. Expression flag removed. New pattern matching for CSON object. More test cases, readme updated and code cleanup.

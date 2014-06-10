@@ -9,17 +9,13 @@
 
 'use strict';
 
-module.exports = function (broccoli) {
+var replace = require('./index');
 
-  var replace = require('./index');
-
-  return replace('test/fixtures', {
-      files: [
-          'simple.txt'
-      ],
-      variables: {
-          key: 'value'
-      }
-  });
-
-};
+module.exports = replace('test/fixtures', {
+  files: [
+      'simple.txt'
+  ],
+  variables: {
+      key: 'value'
+  }
+});
