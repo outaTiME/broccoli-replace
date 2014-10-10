@@ -276,6 +276,7 @@ module.exports = mergeTrees([replacer_op1, replacer_op2, replacer_op3]);
 
 ## Release History
 
+ * 2014-10-10   v0.2.0   Escape regexp when matching type is `String`.
  * 2014-06-10   v0.1.7   Remove node v.8.0 support and third party dependencies updated. Update examples in new broccoli way.
  * 2014-04-20   v0.1.6   JSON / YAML / CSON as function supported. Readme updated (thanks [@milanlandaverde](https://github.com/milanlandaverde)).
  * 2014-03-23   v0.1.5   Readme updated.
