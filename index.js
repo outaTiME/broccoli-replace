@@ -2,7 +2,7 @@
 /*
  * broccoli-replace
  *
- * Copyright (c) 2014 outaTiME
+ * Copyright (c) 2015 outaTiME
  * Licensed under the MIT license.
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
@@ -34,10 +34,6 @@ ReplaceFilter.prototype.getDestFilePath = function (relativePath) {
   for (var i = 0; i < files.length; i++) {
     var pattern = files[i];
     var match = minimatch(relativePath, pattern);
-
-    /* console.log('>>> getDestFilePath: %s, pattern: %s, match: %s', relativePath,
-      pattern, match); */
-
     if (match === true) {
       return relativePath;
     }

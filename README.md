@@ -66,7 +66,7 @@ If matching type is `String` we use a simple variable lookup mechanism `@@string
 }
 ```
 
-#### patterns.replacement
+#### patterns.replacement or patterns.replace
 Type: `String|Function|Object`
 
 Indicates the replacement for match, for more information about replacement check out the [String.replace].
@@ -258,6 +258,12 @@ Type: `Boolean`
 Default: `false`
 
 If set to `true`, we preserve the patterns definition order, otherwise these will be sorted (in ascending order) to prevent replacement issues like `head` / `header` (typo regexps will be resolved at last).
+
+#### detail
+Type: `Boolean`
+Default: `false`
+
+If set to `true`, return a object response with the `content` and `detail` of replace operation.
 
 
 ### Usage Examples
@@ -493,6 +499,7 @@ module.exports = mergeTrees([replacer_op1, replacer_op2, replacer_op3]);
 
 ## Release History
 
+ * 2015-05-01   v0.2.0   Update to [applause](https://github.com/outaTiME/applause) v0.4.0.
  * 2014-10-10   v0.2.0   Escape regexp when matching type is `String`.
  * 2014-06-10   v0.1.7   Remove node v.8.0 support and third party dependencies updated. Update examples in new broccoli way.
  * 2014-04-20   v0.1.6   JSON / YAML / CSON as function supported. Readme updated (thanks [@milanlandaverde](https://github.com/milanlandaverde)).
