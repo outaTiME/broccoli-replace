@@ -1,8 +1,6 @@
-# broccoli-replace [![Build Status](https://secure.travis-ci.org/outaTiME/broccoli-replace.png?branch=master)](http://travis-ci.org/outaTiME/broccoli-replace)
+# broccoli-replace [![Build Status](https://travis-ci.org/outaTiME/broccoli-replace.svg?branch=master)](https://travis-ci.org/outaTiME/broccoli-replace) [![npm version](https://badge.fury.io/js/broccoli-replace.svg)](http://badge.fury.io/js/broccoli-replace)
 
 > Replace text patterns with [applause](https://github.com/outaTiME/applause).
-
-
 
 ## Install
 
@@ -276,6 +274,7 @@ module.exports = mergeTrees([replacer_op1, replacer_op2, replacer_op3]);
 
 ## Release History
 
+ * 2015-08-19   v0.10.0   Last [applause](https://github.com/outaTiME/applause) integration and package.json update.
  * 2015-08-06   v0.3.3   Fix issue with special characters attributes ($$, $&, $`, $', $n or $nn) on JSON, YAML and CSON.
  * 2015-05-07   v0.3.1   Fix regression issue with empty string in replacement.
  * 2015-05-01   v0.3.0   Update to [applause](https://github.com/outaTiME/applause) v0.4.0.
