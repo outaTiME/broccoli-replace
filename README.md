@@ -1,4 +1,4 @@
-# broccoli-replace [![Build Status](https://travis-ci.org/outaTiME/broccoli-replace.svg?branch=master)](https://travis-ci.org/outaTiME/broccoli-replace) [![npm version](https://badge.fury.io/js/broccoli-replace.svg)](http://badge.fury.io/js/broccoli-replace)
+# broccoli-replace [![Build Status](https://img.shields.io/travis/outaTiME/broccoli-replace.svg)](https://travis-ci.org/outaTiME/broccoli-replace) [![NPM Version](https://img.shields.io/npm/v/broccoli-replace.svg)](https://npmjs.org/package/broccoli-replace)
 
 > Replace text patterns with [applause](https://github.com/outaTiME/applause).
 
