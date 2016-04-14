@@ -16,7 +16,7 @@
     "test": "broccoli build temp && mocha"
   },
   "dependencies": {
-    "broccoli-persistenf-filter": "^1.2.0",
+    "broccoli-persistent-filter": "^1.2.0",
     "minimatch": "^2.0.0",
     "applause": "1.1.0"
   },
