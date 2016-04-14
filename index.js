@@ -11,7 +11,7 @@
 
 // dependencies
 
-var Filter = require('broccoli-filter');
+var Filter = require('broccoli-persistent-filter');
 var minimatch = require("minimatch");
 var Applause = require('applause');
 
