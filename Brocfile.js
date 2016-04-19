@@ -2,7 +2,7 @@
 /*
  * broccoli-replace
  *
- * Copyright (c) 2015 outaTiME
+ * Copyright (c) 2016 outaTiME
  * Licensed under the MIT license.
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
@@ -13,9 +13,9 @@ var replace = require('./index');
 
 module.exports = replace('test/fixtures', {
   files: [
-      'simple.txt'
+    'simple.txt'
   ],
   variables: {
-      key: 'value'
+    key: 'value'
   }
 });

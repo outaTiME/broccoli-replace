@@ -2,7 +2,7 @@
 /*
  * broccoli-replace
  *
- * Copyright (c) 2015 outaTiME
+ * Copyright (c) 2016 outaTiME
  * Licensed under the MIT license.
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
@@ -38,6 +38,5 @@ var options = {
   }]
 };
 var applause = Applause.create(options);
-var contents = fs.readFileSync('docs/README.md', 'utf8');
-var result = applause.replace(contents);
-fs.writeFileSync('README.md', result, 'utf8');
+var result = applause.replace(fs.readFileSync('docs/README.md', 'utf8'));
+fs.writeFileSync('README.md', result.content, 'utf8');

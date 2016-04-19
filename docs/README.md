@@ -274,6 +274,7 @@ module.exports = mergeTrees([replacer_op1, replacer_op2, replacer_op3]);
 
 ## Release History
 
+ * 2016-04-19   v0.12.0   Use broccoli-persistent-filter instead of broccoli-filter (thanks [@alexBaizeau](https://github.com/alexBaizeau))
  * 2015-09-09   v0.11.0   Improvements in handling patterns. Fix plain object representation issue. More test cases.
  * 2015-08-19   v0.10.0   Last [applause](https://github.com/outaTiME/applause) integration and package.json update.
  * 2015-08-06   v0.3.3   Fix issue with special characters attributes ($$, $&, $`, $', $n or $nn) on JSON, YAML and CSON.

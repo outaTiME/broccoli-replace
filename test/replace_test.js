@@ -2,7 +2,7 @@
 /*
  * broccoli-replace
  *
- * Copyright (c) 2015 outaTiME
+ * Copyright (c) 2016 outaTiME
  * Licensed under the MIT license.
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
@@ -17,22 +17,20 @@ var rimraf = require('rimraf');
 
 // test
 
-afterEach(function () {
+afterEach(function() {
   rimraf.sync('temp');
 });
 
-describe('broccoli-replace', function () {
+describe('broccoli-replace', function() {
 
   var expect;
   var result;
 
-  it('should replace simple key with value', function (done) {
-
+  it('should replace simple key with value', function(done) {
     expect = 'value\n';
     result = fs.readFileSync('temp/simple.txt', 'utf8');
     assert.equal(result, expect);
     done();
-
   });
 
 });

@@ -2,7 +2,7 @@
 /*
  * broccoli-replace
  *
- * Copyright (c) 2015 outaTiME
+ * Copyright (c) 2016 outaTiME
  * Licensed under the MIT license.
  * https://github.com/outaTiME/broccoli-replace/blob/master/LICENSE-MIT
  */
@@ -12,10 +12,10 @@
 // dependencies
 
 var Filter = require('broccoli-persistent-filter');
-var minimatch = require("minimatch");
+var minimatch = require('minimatch');
 var Applause = require('applause');
 
-function ReplaceFilter (inputTree, options) {
+function ReplaceFilter(inputTree, options) {
   if (!(this instanceof ReplaceFilter)) {
     return new ReplaceFilter(inputTree, options);
   }
@@ -29,7 +29,7 @@ function ReplaceFilter (inputTree, options) {
 ReplaceFilter.prototype = Object.create(Filter.prototype);
 ReplaceFilter.prototype.constructor = ReplaceFilter;
 
-ReplaceFilter.prototype.getDestFilePath = function (relativePath) {
+ReplaceFilter.prototype.getDestFilePath = function(relativePath) {
   var files = this.options.files || [];
   for (var i = 0; i < files.length; i++) {
     var pattern = files[i];
@@ -41,9 +41,11 @@ ReplaceFilter.prototype.getDestFilePath = function (relativePath) {
   return null;
 };
 
-ReplaceFilter.prototype.processString = function (string) {
-  var result = this.applause.replace(string);
-  if (result === false) {
+ReplaceFilter.prototype.processString = function(string) {
+  var res = this.applause.replace(string);
+  var result = res.content;
+  var count = res.count;
+  if (count === 0) {
     // no replacements
     return string;
   }

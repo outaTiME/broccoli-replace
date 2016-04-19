@@ -1,7 +1,7 @@
 {
   "name": "broccoli-replace",
   "description": "Replace text patterns with applause.",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "author": {
     "name": "outaTiME",
     "url": "http://outa.im/"
@@ -17,12 +17,12 @@
   },
   "dependencies": {
     "broccoli-persistent-filter": "^1.2.0",
-    "minimatch": "^2.0.0",
-    "applause": "1.1.0"
+    "minimatch": "^3.0.0",
+    "applause": "1.2.2"
   },
   "devDependencies": {
-    "mocha": "^2.2.0",
-    "rimraf": "^2.4.0",
+    "mocha": "^2.4.0",
+    "rimraf": "^2.5.0",
     "broccoli": "^0.16.0"
   },
   "keywords": [
@@ -44,5 +44,24 @@
   "main": "index.js",
   "files": [
     "index.js"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "env": {
+      "node": true,
+      "mocha": true
+    },
+    "rules": {
+      "quotes": [
+        2,
+        "single"
+      ],
+      "indent": [
+        2,
+        2
+      ]
+    }
+  }
 }
