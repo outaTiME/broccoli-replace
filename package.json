@@ -21,7 +21,7 @@
     "applause": "1.2.2"
   },
   "devDependencies": {
-    "mocha": "^2.4.0",
+    "mocha": "^3.1.2",
     "rimraf": "^2.5.0",
     "broccoli": "^0.16.0"
   },
