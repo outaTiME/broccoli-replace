@@ -141,7 +141,7 @@ module.exports = new BroccoliReplace('src', {
 
 ### Cache busting
 
-File `src/index.html`:
+File `src/assets/index.html`:
 
 ```html
 <head>
@@ -157,7 +157,7 @@ var BroccoliReplace = require('broccoli-replace');
 
 module.exports = new BroccoliReplace('src', {
   files: [
-    'index.html'
+    'assets/index.html'
   ],
   patterns: [
     {
@@ -217,7 +217,7 @@ module.exports = new BroccoliReplace('src', {
   patterns: [
     {
       match: /(\w+)\s(\w+)/,
-      replacement: '$2, $1' // Replaces "John Smith" to "Smith, John"
+      replacement: '$2, $1' // Replaces "John Smith" with "Smith, John"
     }
   ]
 });
