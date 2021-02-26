@@ -71,7 +71,7 @@ module.exports = new BroccoliReplace('src', {
   patterns: [
     {
       match: 'timestamp',
-      replacement: new Date().getTime()
+      replacement: Date.now()
     }
   ]
 });
@@ -133,7 +133,7 @@ module.exports = new BroccoliReplace('src', {
     },
     {
       match: 'timestamp',
-      replacement: new Date().getTime()
+      replacement: Date.now()
     }
   ]
 });
@@ -162,7 +162,7 @@ module.exports = new BroccoliReplace('src', {
   patterns: [
     {
       match: 'timestamp',
-      replacement: new Date().getTime()
+      replacement: Date.now()
     }
   ]
 });
