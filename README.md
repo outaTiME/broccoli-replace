@@ -141,7 +141,7 @@ module.exports = new BroccoliReplace('src', {
 
 ### Cache busting
 
-File `src/assets/index.html`:
+File `src/index.html`:
 
 ```html
 <head>
@@ -157,7 +157,7 @@ var BroccoliReplace = require('broccoli-replace');
 
 module.exports = new BroccoliReplace('src', {
   files: [
-    'assets/index.html'
+    'index.html'
   ],
   patterns: [
     {

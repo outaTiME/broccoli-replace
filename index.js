@@ -17,10 +17,8 @@ ReplaceFilter.prototype = Object.create(Filter.prototype);
 ReplaceFilter.prototype.constructor = ReplaceFilter;
 
 ReplaceFilter.prototype.processString = function (string) {
-  var res = this.applause.replace(string);
-  var result = res.content;
-  var count = res.count;
-  if (count === 0) {
+  var result = this.applause.replace(string).content;
+  if (result === false) {
     // No replacements
     return string;
   }
